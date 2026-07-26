@@ -4,115 +4,125 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="日本株のアダプティブ売買システムの運用成績（シミュレーション（紙トレード））">
-<title>MMJ — 日本株アダプティブ売買システムの成績</title>
+<meta name="description" content="日本株アダプティブ売買システム MMJ の運用実績レポート（フォワード・ペーパートレード）">
+<title>MMJ 運用実績レポート</title>
 <style>
 *{box-sizing:border-box}
 :root{
-  --page:#fbfbfd; --surface:#fff; --ink:#16181d; --ink2:#3c4149; --muted:#767b85;
-  --border:#e3e5ea; --grid:#eceef2; --up:#0a7d43; --down:#c0392b; --accent:#0b6cff;
+  --page:#fcfcfd; --surface:#fff; --ink:#1a1c20; --ink2:#4a4f57; --muted:#7b818b;
+  --border:#dfe2e7; --grid:#eef0f3; --up:#0f6b3f; --down:#a8342a; --line:#4a5568;
 }
 @media (prefers-color-scheme:dark){
-  :root{--page:#101216; --surface:#171a20; --ink:#e6e8ec; --ink2:#b9bec7; --muted:#858b96;
-        --border:#262b33; --grid:#22262e; --up:#3ecf8e; --down:#ff6b5b; --accent:#4d9bff;}
+  :root{--page:#0f1114; --surface:#15181c; --ink:#e4e6ea; --ink2:#b4bac2; --muted:#848a94;
+        --border:#272c33; --grid:#1e2228; --up:#4bb583; --down:#e0776a; --line:#96a2b4;}
 }
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--page);color:var(--ink);line-height:1.65;
+body{margin:0;background:var(--page);color:var(--ink);line-height:1.7;font-size:15px;
   font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;}
-main{max-width:760px;margin:0 auto;padding:20px 16px 64px}
-h1{font-size:1.5rem;margin:0 0 .2rem;letter-spacing:.01em}
-h2{font-size:1.05rem;margin:2.2rem 0 .7rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
-p{margin:.6rem 0}
-.lede{color:var(--ink2);font-size:.95rem;margin:0 0 1.2rem}
-.banner{background:color-mix(in srgb,var(--accent) 10%,transparent);
-  border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);
-  border-radius:12px;padding:12px 14px;font-size:.9rem;margin:1rem 0 1.4rem}
-.banner strong{color:var(--accent)}
-.hero{background:var(--surface);border:1px solid var(--border);border-radius:14px;
-  padding:18px 18px 16px;margin:1.2rem 0;text-align:center}
-.hero .k{font-size:.78rem;color:var(--muted);letter-spacing:.04em}
-.hero .big{font-size:2.4rem;font-weight:700;letter-spacing:-.01em;line-height:1.15;
-  font-variant-numeric:tabular-nums;margin:.15rem 0 .3rem}
-.hero .sub{font-size:.92rem;color:var(--ink2);font-variant-numeric:tabular-nums}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:1rem 0}
-.tile{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
-.tile .k{font-size:.75rem;color:var(--muted);letter-spacing:.02em}
-.tile .v{font-size:1.5rem;font-weight:600;font-variant-numeric:tabular-nums;margin-top:.15rem}
+main{max-width:740px;margin:0 auto;padding:28px 18px 72px}
+header{border-bottom:2px solid var(--ink);padding-bottom:.8rem;margin-bottom:1.1rem}
+h1{font-size:1.32rem;margin:0;letter-spacing:.01em;font-weight:650}
+.sub{color:var(--ink2);font-size:.9rem;margin:.35rem 0 0}
+h2{font-size:.95rem;margin:2.4rem 0 .6rem;font-weight:650;letter-spacing:.03em;
+  text-transform:none;color:var(--ink);border-bottom:1px solid var(--border);padding-bottom:.35rem}
+p{margin:.55rem 0}
+.notice{border-left:3px solid var(--muted);padding:.15rem 0 .15rem .8rem;margin:1rem 0;
+  color:var(--ink2);font-size:.85rem}
 .up{color:var(--up)} .down{color:var(--down)} .muted{color:var(--muted)}
-.note{font-size:.8rem}
-.chartwrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 8px 4px}
+.note{font-size:.79rem;margin-top:.5rem}
+.scroll{overflow-x:auto;border:1px solid var(--border);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.87rem}
+th,td{padding:8px 12px;text-align:left;border-top:1px solid var(--grid);vertical-align:top}
+thead th{border-top:none;color:var(--muted);font-weight:600;font-size:.76rem;
+  letter-spacing:.02em;background:var(--grid);white-space:nowrap}
+tbody tr:first-child th,tbody tr:first-child td{border-top:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.kv th[scope=row]{color:var(--ink2);font-weight:500;width:42%;white-space:normal}
+table.kv td{font-variant-numeric:tabular-nums}
+table.kv.wide th[scope=row]{width:34%}
+table.kv.wide td{white-space:normal;font-variant-numeric:normal}
+table:not(.kv) td{white-space:nowrap}
+.hint{border:1px solid var(--border);border-radius:50%;width:1.05em;height:1.05em;
+  display:inline-flex;align-items:center;justify-content:center;font-size:.7em;
+  color:var(--muted);cursor:help;text-decoration:none;vertical-align:middle}
+.chartwrap{border:1px solid var(--border);border-radius:6px;background:var(--surface);padding:8px 8px 4px}
 svg{display:block;width:100%;height:auto}
-.line{fill:none;stroke:var(--accent);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
-.base{stroke:var(--grid);stroke-width:1;stroke-dasharray:4 4}
-.axis{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);padding:2px 4px 0}
-.yaxis{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);
-  padding:0 4px 2px;font-variant-numeric:tabular-nums}
-.scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--border);border-radius:12px}
-table{border-collapse:collapse;width:100%;font-size:.86rem}
-th,td{padding:8px 12px;text-align:left;white-space:nowrap;border-top:1px solid var(--grid)}
-thead th{border-top:none;color:var(--muted);font-weight:500;font-size:.76rem}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--border);
+.line{fill:none;stroke:var(--line);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.base{stroke:var(--border);stroke-width:1;stroke-dasharray:3 3}
+.axis,.yaxis{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);
+  font-variant-numeric:tabular-nums;padding:2px 2px 0}
+.yaxis{padding:0 2px 3px}
+footer{margin-top:3.2rem;padding-top:1.1rem;border-top:1px solid var(--border);
   font-size:.78rem;color:var(--muted)}
-footer p{margin:.45rem 0}
+footer p{margin:.5rem 0}
 @media(max-width:480px){
-  main{padding:16px 12px 48px} h1{font-size:1.3rem}
-  .tile .v{font-size:1.3rem} th,td{padding:7px 9px}
-  .hero .big{font-size:2rem} .hero{padding:16px 12px 14px}
-  .tiles{grid-template-columns:repeat(2,1fr);gap:8px}
-  .tile{padding:10px 11px} .tile .v{font-size:1.15rem}
+  main{padding:20px 13px 56px} body{font-size:14px}
+  th,td{padding:7px 9px} table{font-size:.83rem}
+  table.kv th[scope=row]{width:47%}
 }
 </style>
 </head>
 <body>
 <main>
-<h1>MMJ — 日本株アダプティブ売買システム</h1>
-<p class="lede">相場つき（トレンド／レンジ）を自動判定し、局面に合う手法だけで日本株を売買する
-システムの成績記録です。2026-06-12 〜 2026-07-24・毎営業日の引け後に自動更新。</p>
-<div class="banner"><strong>これはシミュレーションです。</strong> 実際の資金は投じていません（紙トレード＝実際の株価データで売買を模擬したもの）。手数料・スリッページ・貸株料は計算に織り込んでいますが、実運用では約定のずれなどにより結果は変わります。</div>
+<header>
+<h1>MMJ 運用実績レポート</h1>
+<p class="sub">相場つき（トレンド／レンジ）を自動判定し、局面に合う手法だけで日本株を売買する
+システムの実績記録。売買ロジックは非公開ですが、実績と執行条件は全て公開します。</p>
+</header>
+<p class="notice">本レポートはフォワード・ペーパートレードの結果です。一定の約定ルールに基づくシミュレーションであり、実際の約定結果とは異なる場合があります。</p>
+<div class="scroll"><table class="kv"><tbody><tr><th scope="row">レポート種別</th><td class="num ">フォワード・ペーパートレード</td></tr><tr><th scope="row">集計期間</th><td class="num ">2026-06-12 〜 2026-07-24</td></tr><tr><th scope="row">ルール版</th><td class="num ">v1.0</td></tr><tr><th scope="row">最終更新</th><td class="num ">2026-07-27 01:10</td></tr><tr><th scope="row">更新頻度</th><td class="num ">毎営業日の引け後（自動生成）</td></tr></tbody></table></div>
 
-<div class="hero">
-<div class="k">現在の資産評価額</div>
-<div class="big up">¥3,164,563</div>
-<div class="sub">元本 ¥3,000,000 → <span class="up">
-¥164,563（+5.49%）</span></div>
-</div>
-<h2>成績サマリー</h2>
-<div class="tiles"><div class="tile"><div class="k">累計リターン</div><div class="v up">+5.49%</div></div><div class="tile"><div class="k">最大ドローダウン</div><div class="v down">-1.46%</div></div><div class="tile"><div class="k">最大の落ち込み額</div><div class="v down">−¥43,909</div></div><div class="tile"><div class="k">運用日数</div><div class="v ">30日</div></div><div class="tile"><div class="k">取引回数</div><div class="v ">51回</div></div><div class="tile"><div class="k">勝率</div><div class="v ">54.9%</div></div><div class="tile"><div class="k">損益レシオ</div><div class="v ">2.10</div></div><div class="tile"><div class="k">平均保有</div><div class="v ">4.3日</div></div><div class="tile"><div class="k">平均利益</div><div class="v up">¥11,680</div></div><div class="tile"><div class="k">平均損失</div><div class="v down">−¥6,772</div></div><div class="tile"><div class="k">最大の勝ち</div><div class="v up">¥46,742</div></div><div class="tile"><div class="k">最大の負け</div><div class="v down">−¥15,398</div></div></div>
+<h2>資産</h2>
+<div class="scroll"><table class="kv"><tbody><tr><th scope="row">元本</th><td class="num ">¥3,000,000</td></tr><tr><th scope="row">現在資産</th><td class="num ">¥3,164,563</td></tr><tr><th scope="row">累計損益</th><td class="num up">+¥164,563（+5.49%）</td></tr></tbody></table></div>
 
 <h2>資産推移</h2>
 <div class="chartwrap">
 <div class="yaxis"><span>¥3,201,837</span><span>¥2,962,535</span></div>
-<svg viewBox="0 0 640 220" preserveAspectRatio="none" role="img"
-     aria-label="資産推移">
-<line x1="8.0" y1="180.1" x2="632.0" y2="180.1" class="base"/><polyline class="line" points="8.0,180.1 29.5,187.9 51.0,180.8 72.6,187.5 94.1,174.6 115.6,198.6 137.1,193.4 158.6,207.2 180.1,212.0 201.7,195.4 223.2,181.6 244.7,163.3 266.2,170.2 287.7,159.6 309.2,122.8 330.8,93.6 352.3,54.5 373.8,56.4 395.3,65.9 416.8,68.7 438.3,58.3 459.9,81.8 481.4,64.9 502.9,8.0 524.4,23.7 545.9,44.5 567.4,34.7 589.0,26.7 610.5,20.7 632.0,39.8"/>
-</svg>
+<svg viewBox="0 0 640 200" preserveAspectRatio="none" role="img" aria-label="資産推移">
+<line x1="6.0" y1="164.6" x2="634.0" y2="164.6" class="base"/><polyline class="line" points="6.0,164.6 27.7,171.8 49.3,165.3 71.0,171.4 92.6,159.5 114.3,181.7 135.9,176.9 157.6,189.6 179.2,194.0 200.9,178.7 222.6,166.0 244.2,149.1 265.9,155.4 287.5,145.7 309.2,111.8 330.8,84.8 352.5,48.8 374.1,50.6 395.8,59.3 417.4,61.9 439.1,52.4 460.8,74.1 482.4,58.4 504.1,6.0 525.7,20.4 547.4,39.7 569.0,30.6 590.7,23.2 612.3,17.7 634.0,35.3"/></svg>
 <div class="axis"><span>2026-06-12</span><span>2026-07-24</span></div>
 </div>
-<p class="muted note">点線は元本ライン。運用資金はシミュレーション上の仮想資金です（実際に入金した金額ではありません）。</p>
+<p class="muted note">点線は元本ライン。運用資金はシミュレーション上の仮想資金であり、実際に入金した金額ではありません。</p>
+
+<h2>主要指標</h2>
+<div class="scroll"><table class="kv"><tbody><tr><th scope="row">運用営業日数</th><td class="num ">30 日</td></tr><tr><th scope="row">決済済み取引数</th><td class="num ">51 件（勝ち 28 / 負け 23）</td></tr><tr><th scope="row">勝率</th><td class="num ">54.9%</td></tr><tr><th scope="row">プロフィットファクター <abbr class="hint" title="総利益 ÷ 総損失。1回あたりの大きさではなく、期間全体の合計で見た比率です。">?</abbr></th><td class="num ">2.10</td></tr><tr><th scope="row">ペイオフレシオ <abbr class="hint" title="平均利益 ÷ 平均損失。1回あたりの大きさの比率です。プロフィットファクターとは分母分子が異なります。">?</abbr></th><td class="num ">1.72</td></tr><tr><th scope="row">平均保有期間</th><td class="num ">4.3 営業日</td></tr><tr><th scope="row">最大ドローダウン</th><td class="num down">-1.46%</td></tr><tr><th scope="row">最大ドローダウン（金額）</th><td class="num down">−¥43,909</td></tr><tr><th scope="row">総利益 / 総損失</th><td class="num ">¥327,028 / −¥155,751</td></tr><tr><th scope="row">平均利益 / 平均損失</th><td class="num ">¥11,680 / −¥6,772</td></tr><tr><th scope="row">最大の利益 / 最大の損失</th><td class="num ">¥46,742 / −¥15,398</td></tr></tbody></table></div>
 
 <h2>月次リターン</h2>
-<div class="scroll"><table>
-<thead><tr><th>月</th><th class="num">リターン</th></tr></thead>
-<tbody><tr><td>2026-06</td><td class='num up'>+0.39%</td></tr><tr><td>2026-06</td><td class='num up'>+0.39%</td></tr><tr><td>2026-07</td><td class='num '>+nan%</td></tr></tbody></table></div>
+<div class="scroll"><table class="kv"><thead>
+<tr><th scope="col">月</th><th scope="col" class="num">リターン</th></tr></thead>
+<tbody><tr><th scope='row'>2026-06</th><td class='num up'>+0.39%</td></tr><tr><th scope='row'>2026-07</th><td class='num up'>+5.08%</td></tr></tbody></table></div>
+<p class="muted note">月末時点の資産の前月末比。初月は運用開始時の資産を基準にしています。</p>
 
-<h2>直近の取引</h2>
+<h2>決済済み取引</h2>
 <div class="scroll"><table>
-<thead><tr><th>銘柄</th><th>方向</th><th class="num">建日</th>
-<th class="num">保有</th><th class="num">騰落</th><th class="num">損益額</th></tr></thead>
-<tbody><tr><td>5401 日本製鉄</td><td>売り</td><td class='num'>2026-07-24</td><td class='num'>0日</td><td class='num down'>-2.3%</td><td class='num down'>−¥8,539</td></tr><tr><td>4587 ペプチドリーム</td><td>買い</td><td class='num'>2026-07-22</td><td class='num'>2日</td><td class='num down'>-3.1%</td><td class='num down'>−¥9,093</td></tr><tr><td>9508 九州電力</td><td>売り</td><td class='num'>2026-07-23</td><td class='num'>1日</td><td class='num up'>+1.1%</td><td class='num up'>¥3,633</td></tr><tr><td>9509 北海道電力</td><td>売り</td><td class='num'>2026-07-16</td><td class='num'>5日</td><td class='num down'>-0.3%</td><td class='num down'>−¥1,276</td></tr><tr><td>3405 クラレ</td><td>買い</td><td class='num'>2026-07-07</td><td class='num'>11日</td><td class='num up'>+5.6%</td><td class='num up'>¥9,758</td></tr><tr><td>8012 長瀬産業</td><td>買い</td><td class='num'>2026-07-14</td><td class='num'>5日</td><td class='num up'>+4.6%</td><td class='num up'>¥15,804</td></tr><tr><td>3479 ティーケーピー</td><td>買い</td><td class='num'>2026-07-08</td><td class='num'>9日</td><td class='num up'>+7.1%</td><td class='num up'>¥12,631</td></tr><tr><td>5401 日本製鉄</td><td>売り</td><td class='num'>2026-07-17</td><td class='num'>1日</td><td class='num down'>-1.8%</td><td class='num down'>−¥6,440</td></tr><tr><td>9048 名古屋鉄道</td><td>売り</td><td class='num'>2026-07-15</td><td class='num'>3日</td><td class='num down'>-1.9%</td><td class='num down'>−¥3,822</td></tr><tr><td>2503 キリンＨＤ</td><td>買い</td><td class='num'>2026-07-06</td><td class='num'>10日</td><td class='num up'>+4.9%</td><td class='num up'>¥13,768</td></tr><tr><td>8593 三菱ＨＣキャピタ</td><td>売り</td><td class='num'>2026-07-16</td><td class='num'>1日</td><td class='num up'>+0.1%</td><td class='num up'>¥9</td></tr><tr><td>2334 イオレ</td><td>買い</td><td class='num'>2026-07-07</td><td class='num'>8日</td><td class='num down'>-16.3%</td><td class='num down'>−¥10,204</td></tr><tr><td>1893 五洋建設</td><td>買い</td><td class='num'>2026-07-14</td><td class='num'>3日</td><td class='num down'>-4.2%</td><td class='num down'>−¥13,509</td></tr><tr><td>1963 日揮ＨＤ</td><td>買い</td><td class='num'>2026-07-09</td><td class='num'>5日</td><td class='num down'>-2.1%</td><td class='num down'>−¥4,982</td></tr><tr><td>6140 旭ダイヤモンド工</td><td>買い</td><td class='num'>2026-07-08</td><td class='num'>6日</td><td class='num up'>+3.2%</td><td class='num up'>¥11,043</td></tr><tr><td>268A リガク・ＨＤ</td><td>買い</td><td class='num'>2026-07-08</td><td class='num'>5日</td><td class='num up'>+21.6%</td><td class='num up'>¥46,742</td></tr><tr><td>8750 第一ライフ</td><td>買い</td><td class='num'>2026-07-01</td><td class='num'>10日</td><td class='num up'>+7.0%</td><td class='num up'>¥12,441</td></tr><tr><td>9006 京浜急行電鉄</td><td>売り</td><td class='num'>2026-07-07</td><td class='num'>6日</td><td class='num up'>+0.2%</td><td class='num up'>¥411</td></tr><tr><td>3569 セーレン</td><td>買い</td><td class='num'>2026-07-10</td><td class='num'>1日</td><td class='num down'>-4.6%</td><td class='num down'>−¥15,398</td></tr><tr><td>7616 コロワイド</td><td>売り</td><td class='num'>2026-07-09</td><td class='num'>2日</td><td class='num down'>-1.5%</td><td class='num down'>−¥2,906</td></tr><tr><td>4812 電通総研</td><td>売り</td><td class='num'>2026-07-06</td><td class='num'>4日</td><td class='num down'>-0.2%</td><td class='num down'>−¥804</td></tr><tr><td>8508 Ｊトラスト</td><td>買い</td><td class='num'>2026-06-17</td><td class='num'>16日</td><td class='num up'>+0.7%</td><td class='num up'>¥522</td></tr><tr><td>3064 ＭｏｎｏｔａＲＯ</td><td>売り</td><td class='num'>2026-07-07</td><td class='num'>1日</td><td class='num down'>-4.6%</td><td class='num down'>−¥8,894</td></tr><tr><td>3407 旭化成</td><td>買い</td><td class='num'>2026-06-15</td><td class='num'>17日</td><td class='num up'>+1.9%</td><td class='num up'>¥3,366</td></tr><tr><td>8604 野村</td><td>買い</td><td class='num'>2026-07-02</td><td class='num'>3日</td><td class='num up'>+5.8%</td><td class='num up'>¥8,492</td></tr><tr><td>6326 クボタ</td><td>買い</td><td class='num'>2026-07-02</td><td class='num'>3日</td><td class='num up'>+6.4%</td><td class='num up'>¥16,943</td></tr><tr><td>8473 ＳＢＩＨＤ</td><td>買い</td><td class='num'>2026-07-01</td><td class='num'>4日</td><td class='num up'>+4.3%</td><td class='num up'>¥11,227</td></tr><tr><td>6902 デンソー</td><td>売り</td><td class='num'>2026-07-06</td><td class='num'>0日</td><td class='num down'>-1.0%</td><td class='num down'>−¥2,048</td></tr><tr><td>9201 ＪＡＬ</td><td>売り</td><td class='num'>2026-07-03</td><td class='num'>1日</td><td class='num down'>-1.1%</td><td class='num down'>−¥3,584</td></tr><tr><td>7012 川重</td><td>買い</td><td class='num'>2026-07-02</td><td class='num'>2日</td><td class='num up'>+15.5%</td><td class='num up'>¥40,719</td></tr></tbody></table></div>
-<p class="muted note">直近 30 件。すべて決済済みの取引です（保有中の銘柄・
-今後の売買予定は公開していません）。</p>
+<thead><tr><th scope="col">銘柄</th><th scope="col">方向</th>
+<th scope="col" class="num">建日</th><th scope="col" class="num">決済日</th>
+<th scope="col" class="num">保有(営業日)</th><th scope="col" class="num">騰落</th><th scope="col" class="num">損益</th></tr></thead>
+<tbody><tr><td>5401 日本製鉄</td><td>売り</td><td class='num'>2026-07-24</td><td class='num'>2026-07-24</td><td class='num'>0</td><td class='num down'>-2.3%</td><td class='num down'>−¥8,539</td></tr><tr><td>4587 ペプチドリーム</td><td>買い</td><td class='num'>2026-07-22</td><td class='num'>2026-07-24</td><td class='num'>2</td><td class='num down'>-3.1%</td><td class='num down'>−¥9,093</td></tr><tr><td>9508 九州電力</td><td>売り</td><td class='num'>2026-07-23</td><td class='num'>2026-07-24</td><td class='num'>1</td><td class='num up'>+1.1%</td><td class='num up'>+¥3,633</td></tr><tr><td>9509 北海道電力</td><td>売り</td><td class='num'>2026-07-16</td><td class='num'>2026-07-24</td><td class='num'>5</td><td class='num down'>-0.3%</td><td class='num down'>−¥1,276</td></tr><tr><td>3405 クラレ</td><td>買い</td><td class='num'>2026-07-07</td><td class='num'>2026-07-23</td><td class='num'>11</td><td class='num up'>+5.6%</td><td class='num up'>+¥9,758</td></tr><tr><td>8012 長瀬産業</td><td>買い</td><td class='num'>2026-07-14</td><td class='num'>2026-07-22</td><td class='num'>5</td><td class='num up'>+4.6%</td><td class='num up'>+¥15,804</td></tr><tr><td>3479 ティーケーピー</td><td>買い</td><td class='num'>2026-07-08</td><td class='num'>2026-07-22</td><td class='num'>9</td><td class='num up'>+7.1%</td><td class='num up'>+¥12,631</td></tr><tr><td>5401 日本製鉄</td><td>売り</td><td class='num'>2026-07-17</td><td class='num'>2026-07-21</td><td class='num'>1</td><td class='num down'>-1.8%</td><td class='num down'>−¥6,440</td></tr><tr><td>9048 名古屋鉄道</td><td>売り</td><td class='num'>2026-07-15</td><td class='num'>2026-07-21</td><td class='num'>3</td><td class='num down'>-1.9%</td><td class='num down'>−¥3,822</td></tr><tr><td>2503 キリンＨＤ</td><td>買い</td><td class='num'>2026-07-06</td><td class='num'>2026-07-21</td><td class='num'>10</td><td class='num up'>+4.9%</td><td class='num up'>+¥13,768</td></tr><tr><td>8593 三菱ＨＣキャピタ</td><td>売り</td><td class='num'>2026-07-16</td><td class='num'>2026-07-17</td><td class='num'>1</td><td class='num up'>+0.1%</td><td class='num up'>+¥9</td></tr><tr><td>2334 イオレ</td><td>買い</td><td class='num'>2026-07-07</td><td class='num'>2026-07-17</td><td class='num'>8</td><td class='num down'>-16.3%</td><td class='num down'>−¥10,204</td></tr><tr><td>1893 五洋建設</td><td>買い</td><td class='num'>2026-07-14</td><td class='num'>2026-07-17</td><td class='num'>3</td><td class='num down'>-4.2%</td><td class='num down'>−¥13,509</td></tr><tr><td>1963 日揮ＨＤ</td><td>買い</td><td class='num'>2026-07-09</td><td class='num'>2026-07-16</td><td class='num'>5</td><td class='num down'>-2.1%</td><td class='num down'>−¥4,982</td></tr><tr><td>6140 旭ダイヤモンド工</td><td>買い</td><td class='num'>2026-07-08</td><td class='num'>2026-07-16</td><td class='num'>6</td><td class='num up'>+3.2%</td><td class='num up'>+¥11,043</td></tr><tr><td>268A リガク・ＨＤ</td><td>買い</td><td class='num'>2026-07-08</td><td class='num'>2026-07-15</td><td class='num'>5</td><td class='num up'>+21.6%</td><td class='num up'>+¥46,742</td></tr><tr><td>8750 第一ライフ</td><td>買い</td><td class='num'>2026-07-01</td><td class='num'>2026-07-15</td><td class='num'>10</td><td class='num up'>+7.0%</td><td class='num up'>+¥12,441</td></tr><tr><td>9006 京浜急行電鉄</td><td>売り</td><td class='num'>2026-07-07</td><td class='num'>2026-07-15</td><td class='num'>6</td><td class='num up'>+0.2%</td><td class='num up'>+¥411</td></tr><tr><td>3569 セーレン</td><td>買い</td><td class='num'>2026-07-10</td><td class='num'>2026-07-13</td><td class='num'>1</td><td class='num down'>-4.6%</td><td class='num down'>−¥15,398</td></tr><tr><td>7616 コロワイド</td><td>売り</td><td class='num'>2026-07-09</td><td class='num'>2026-07-13</td><td class='num'>2</td><td class='num down'>-1.5%</td><td class='num down'>−¥2,906</td></tr><tr><td>4812 電通総研</td><td>売り</td><td class='num'>2026-07-06</td><td class='num'>2026-07-10</td><td class='num'>4</td><td class='num down'>-0.2%</td><td class='num down'>−¥804</td></tr><tr><td>8508 Ｊトラスト</td><td>買い</td><td class='num'>2026-06-17</td><td class='num'>2026-07-09</td><td class='num'>16</td><td class='num up'>+0.7%</td><td class='num up'>+¥522</td></tr><tr><td>3064 ＭｏｎｏｔａＲＯ</td><td>売り</td><td class='num'>2026-07-07</td><td class='num'>2026-07-08</td><td class='num'>1</td><td class='num down'>-4.6%</td><td class='num down'>−¥8,894</td></tr><tr><td>3407 旭化成</td><td>買い</td><td class='num'>2026-06-15</td><td class='num'>2026-07-08</td><td class='num'>17</td><td class='num up'>+1.9%</td><td class='num up'>+¥3,366</td></tr><tr><td>8604 野村</td><td>買い</td><td class='num'>2026-07-02</td><td class='num'>2026-07-07</td><td class='num'>3</td><td class='num up'>+5.8%</td><td class='num up'>+¥8,492</td></tr><tr><td>6326 クボタ</td><td>買い</td><td class='num'>2026-07-02</td><td class='num'>2026-07-07</td><td class='num'>3</td><td class='num up'>+6.4%</td><td class='num up'>+¥16,943</td></tr><tr><td>8473 ＳＢＩＨＤ</td><td>買い</td><td class='num'>2026-07-01</td><td class='num'>2026-07-07</td><td class='num'>4</td><td class='num up'>+4.3%</td><td class='num up'>+¥11,227</td></tr><tr><td>6902 デンソー</td><td>売り</td><td class='num'>2026-07-06</td><td class='num'>2026-07-06</td><td class='num'>0</td><td class='num down'>-1.0%</td><td class='num down'>−¥2,048</td></tr><tr><td>9201 ＪＡＬ</td><td>売り</td><td class='num'>2026-07-03</td><td class='num'>2026-07-06</td><td class='num'>1</td><td class='num down'>-1.1%</td><td class='num down'>−¥3,584</td></tr><tr><td>7012 川重</td><td>買い</td><td class='num'>2026-07-02</td><td class='num'>2026-07-06</td><td class='num'>2</td><td class='num up'>+15.5%</td><td class='num up'>+¥40,719</td></tr></tbody></table></div>
+<p class="muted note">決済日の新しい順に直近 30 件。すべて決済済みです。
+保有中の銘柄・今後の売買予定は公開していません。</p>
+
+<h2>シミュレーション条件</h2>
+<p class="muted note">この表は設定ファイルの実際の値から自動生成しています（記載と実態がずれないように）。</p>
+<div class="scroll"><table class="kv wide"><tbody><tr><th scope="row">種別</th><td>フォワード・ペーパートレード（実売買ではありません）</td></tr><tr><th scope="row">対象</th><td>東証上場の日本株。売買代金・株価でふるいにかけた約 400 銘柄</td></tr><tr><th scope="row">判断のタイミング</th><td>毎営業日の引け後にその日のデータで判断し、翌営業日に執行</td></tr><tr><th scope="row">約定価格（新規）</th><td>翌営業日の始値。前日終値から不利な方向へ 2.0% 以上乖離して寄り付いた場合は見送り</td></tr><tr><th scope="row">約定価格（決済）</th><td>損切り・時間切れは成行、利益確定は指値として計算。日中の判定に使う足は 5分足（取得できた日のみ。無い日は日足で近似）</td></tr><tr><th scope="row">スリッページ</th><td>成行の売買に 5.0bp（0.05%）を常に不利な方向へ加算。指値扱いの決済には加算しません</td></tr><tr><th scope="row">売買手数料</th><td>0.0bp（ネット証券の手数料無料コースを前提）</td></tr><tr><th scope="row">信用買いの金利</th><td>発生しません（レバレッジを使わず、買付は現金の範囲内のため）</td></tr><tr><th scope="row">空売りの貸株料</th><td>年 1.10% を保有暦日で日割り計算</td></tr><tr><th scope="row">税金</th><td><strong>含まれていません</strong>。本ページの数値はすべて税引前です</td></tr><tr><th scope="row">1取引あたりのリスク</th><td>資産の 0.50%。損切り価格までの値幅から逆算して株数を決めます</td></tr><tr><th scope="row">1銘柄の上限</th><td>資産の 12%</td></tr><tr><th scope="row">同時保有の上限</th><td>12 銘柄</td></tr><tr><th scope="row">レバレッジ</th><td>なし（1.0 倍。買付代金は全額を現金で拘束）</td></tr><tr><th scope="row">下落時の抑制</th><td>資産がピークから 8% 減で建玉サイズを半分に、12% 減で新規建てを停止</td></tr><tr><th scope="row">決算発表</th><td>発表の 2 営業日前から新規建てを行わず、保有中のものは決済します</td></tr><tr><th scope="row">特殊なケース</th><td>ストップ高・ストップ安、売買停止、板の薄さによる約定不成立は<strong>考慮していません</strong>（指定価格で約定できる前提の計算です）。株式分割・併合は取得データ側で調整済みの株価を使用しています</td></tr><tr><th scope="row">配当・株主優待</th><td><strong>含まれていません</strong></td></tr></tbody></table></div>
+
+<h2>ルール変更履歴</h2>
+<div class="scroll"><table>
+<thead><tr><th scope="col">版</th><th scope="col" class="num">適用日</th>
+<th scope="col">内容</th></tr></thead><tbody><tr><th scope="row">v1.0</th><td class="num">2026-06-12</td><td>フォワード・ペーパートレード開始。翌営業日寄付の成行執行、手数料0・スリッページ5bp、無レバレッジ。</td></tr></tbody></table></div>
+<p class="muted note">執行・コスト・資金配分の条件を変更した場合はここに追記します。
+<strong>過去の実績は遡って書き換えません。</strong></p>
 
 <footer>
-<p><strong>投資助言ではありません。</strong> 本ページは個人が開発した売買システムの
-記録を公開しているだけのもので、特定の銘柄の売買を推奨するものではありません。
+<p><strong>投資助言ではありません。</strong> 本ページは個人が開発した売買システムの記録を
+公開しているだけのもので、特定の銘柄の売買を推奨するものではありません。
 掲載しているのは<strong>すでに決済が終わった取引</strong>のみで、保有中の銘柄や
 今後の売買予定は公開していません。</p>
-<p>売買ロジック・パラメータ・銘柄選定の基準は非公開です。</p>
+<p>売買シグナルのロジック・パラメータ・銘柄選定の基準は非公開です。
+執行・コスト・資金配分の条件は上記「シミュレーション条件」に記載しています。</p>
 <p>投資判断はご自身の責任で行ってください。過去の成績（およびシミュレーション結果）は
 将来の成果を保証しません。</p>
-<p>最終更新: 2026-07-27 00:31</p>
+<p>最終更新: 2026-07-27 01:10</p>
 </footer>
 </main>
 </body>
